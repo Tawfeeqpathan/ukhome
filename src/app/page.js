@@ -34,7 +34,7 @@ export default function Home() {
   const [data, setData] = useState()
   const [review, setReview] = useState()
   const [productId, setProductId] = useState();
-  console.log(`Database name is ${process.env.APIKEY} ${process.env.APISECERT}`);
+  //console.log(`Database name is ${process.env.APIKEY} ${process.env.APISECERT}`);
 
   const apiKey = 'ck_503e81308c5e908b9050b367e98d837395f578c4'; // Replace 'YOUR_API_KEY' with your actual API key
   const apiSecret = 'cs_1ed4558d5120ba67905426b5f46f8a38efb47035'; // Replace 'YOUR_API_SECRET' with your actual API secret
@@ -69,7 +69,7 @@ export default function Home() {
      const id = queryParams.get('product_id');
      // Update the state with the product ID
      setProductId(id);
-     console.log("id",id);
+     //console.log("id",id);
     fetch(`https://kingdomcollection.uk/wp-json/wc/v3/products/${id}`, requestOptions)
       .then(response => {
         if (!response.ok) {
@@ -78,7 +78,7 @@ export default function Home() {
         return response.json();
       })
       .then(products => {
-        console.log('Products:', products);
+       // console.log('Products:', products);
         setData(products);
       })
       .catch(error => {
@@ -93,7 +93,7 @@ export default function Home() {
         return response.json();
       })
       .then(Review => {
-        console.log('reviews:', Review);
+        //console.log('reviews:', Review);
         setReview(Review);
       })
       .catch(error => {
