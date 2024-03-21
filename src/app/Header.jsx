@@ -17,7 +17,7 @@ export default function Header() {
         <>
             <div className={style.navber}>
                 <div className="logo">
-                    <Image src={logo} width={240} height={70} />
+                    <Image src={logo} width={240} height={70} alt="Description"/>
                 </div>
                 <div className={style.search}>
                     <input placeholder='Search for anything' className={style.input} />
@@ -29,7 +29,7 @@ export default function Header() {
                         </div> 
                     {/* <div className={style.signIn} title='sign in'>Sign in</div> */}
                     <div className={style.indiaFlagDiv}>
-                        <Image src={india} width={20} height={20} className={style.indiaFlag} />
+                        <Image src={india} width={20} height={20} className={style.indiaFlag} alt="Description"/>
                     </div>
                     <div className={style.like}><FaRegHeart /></div>
                     <div className={style.cart} onClick={gocart}>

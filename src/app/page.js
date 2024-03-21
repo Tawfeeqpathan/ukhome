@@ -99,7 +99,7 @@ export default function Home() {
       .catch(error => {
         console.error('There was a problem with the fetch request:', error);
       });
-  }, [])
+  }, [data])
 
   useEffect(() => {
     const handleResize = () => {
@@ -116,7 +116,7 @@ export default function Home() {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [data]);
   const handleDiv = () => {
     setOpen(!open)
   }
@@ -167,7 +167,7 @@ export default function Home() {
                     <p style={{}}>Style<sup style={{ color: '#A61A2E', fontSize: '10px' }}> <IoMdStar /></sup></p>
                   </div>
                   <div> <select id="color-selector" className={style.select}>
-                    <option value=" " selected=" ">
+                    <option>
                       choose an option
                     </option>
                     {data?.attributes[0].options ? data.attributes[0].options.map((item,index) => (
@@ -186,7 +186,7 @@ export default function Home() {
                     </button>
                   </div>
                   <div className={style.starReview}>
-                    <Image src={starimg} width={60} height={35} />
+                    <Image src={starimg} width={60} height={35} alt="Description" />
                     <p className={style.checkP}><span style={{ fontFamily: 'bold', fontSize: '1rem' }}>Star Product!</span> This product consistently earned 5-star reviews, dispatched on time, and</p>
                   </div>
 
@@ -248,7 +248,7 @@ export default function Home() {
                           <p> <span style={{ fontSize: '.9rem', borderBottom: '1px dashed gay', cursor: 'pointer' }}>Returns & exchanges accepted </span> Within 30 days</p>
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'row', fontSize: '.9rem', color: '#222222', alignItems: 'center', gap: '10' }}>
-                          <Image src={hands} width={50} height={50} />
+                          <Image src={hands} width={50} height={50} alt="Description"/>
                           <p>Kindom Collection Purchase Protection: Shop confidently on Kingdom Collection knowing if something goes wrong with an order, we've got your back for all eligible purchases - <span style={{ fontSize: '1rem', borderBottom: '1px solid black', cursor: 'pointer' }}>see programme terms</span></p>
                         </div>
                       </div> : null
@@ -259,7 +259,7 @@ export default function Home() {
                     {
                       open3 ? <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                         <div>
-                          <Image src={brand} width={90} height={80} />
+                          <Image src={brand} width={90} height={80} alt="Description"/>
                         </div>
                         <div style={{ fontFamily: '"Guardian-EgypTT", "Charter", "Charter Bitstream", "Cambria", "Noto Serif Light", "Droid Serif", "Georgia", "serif"' }}>
                           <p style={{ fontSize: '1.4rem', color: '#222222' }}>Kingdom Collection</p>
@@ -323,7 +323,7 @@ export default function Home() {
                           {item.review.substring(3, item.review.length - 5)}
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'row', gap: '10px', alignItems: 'center', width: '25rem' }}>
-                          <div><Image src={ricon} width={30} height={30} style={{ borderRadius: '50%' }} /></div>
+                          <div><Image src={ricon} width={30} height={30} style={{ borderRadius: '50%' }} alt="Description" /></div>
                           <div style={{ borderBottom: '1px solid #222222', cursor: 'pointer' }} className={style.text}>{item.reviewer
                           }</div>
                           <div className={style.text}> {item.date_created.substring(0, 10)}</div>
@@ -365,10 +365,10 @@ export default function Home() {
                 <div className={style.text}>[load_more_reviews]</div>
                 <div className={style.text}>Photos from reviews</div>
                 <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                  <Image src={img1} width={150} height={150} style={{ borderRadius: '12px' }} />
-                  <Image src={img1} width={150} height={150} style={{ borderRadius: '12px' }} />
-                  <Image src={img1} width={150} height={150} style={{ borderRadius: '12px' }} />
-                  <Image src={img1} width={150} height={150} style={{ borderRadius: '12px' }} />
+                  <Image src={img1} width={150} height={150} style={{ borderRadius: '12px' }} alt="Description"/>
+                  <Image src={img1} width={150} height={150} style={{ borderRadius: '12px' }} alt="Description"/>
+                  <Image src={img1} width={150} height={150} style={{ borderRadius: '12px' }} alt="Description"/>
+                  <Image src={img1} width={150} height={150} style={{ borderRadius: '12px' }} alt="Description"/>
 
                 </div>
                 <div className={style.text}>Explore related searches</div>
@@ -452,7 +452,7 @@ export default function Home() {
                           {item.review.substring(3, item.review.length - 5)}
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'row', gap: '20px', alignItems: 'center' }}>
-                          <div><Image src={ricon} width={30} height={30} style={{ borderRadius: '50%' }} /></div>
+                          <div><Image src={ricon} width={30} height={30} style={{ borderRadius: '50%' }} alt="Description" /></div>
                           <div style={{ borderBottom: '1px solid #222222', cursor: 'pointer' }} className={style.text}>{item.reviewer}</div>
                           <div className={style.text}> {item.date_created.substring(0, 10)}</div>
                         </div>
@@ -540,7 +540,7 @@ export default function Home() {
                   </button>
                 </div>
                 <div className={style.starReview}>
-                  <Image src={starimg} width={60} height={35} />
+                  <Image src={starimg} width={60} height={35}  alt="Description"/>
                   <p className={style.checkP}><span style={{ fontFamily: 'bold', fontSize: '1rem' }}>Star Product!</span> This product consistently earned 5-star reviews, dispatched on time, and</p>
                 </div>
 
@@ -601,7 +601,7 @@ export default function Home() {
                         <p> <span style={{ fontSize: '.9rem', borderBottom: '1px dashed gay', cursor: 'pointer' }}>Returns & exchanges accepted </span> Within 30 days</p>
                       </div>
                       <div style={{ display: 'flex', flexDirection: 'row', fontSize: '.9rem', color: '#222222', alignItems: 'center', gap: '10' }}>
-                        <Image src={hands} width={50} height={50} />
+                        <Image src={hands} width={50} height={50} alt="Description"/>
                         <p>Kindom Collection Purchase Protection: Shop confidently on Kingdom Collection knowing if something goes wrong with an order, we've got your back for all eligible purchases - <span style={{ fontSize: '1rem', borderBottom: '1px solid black', cursor: 'pointer' }}>see programme terms</span></p>
                       </div>
                     </div> : null
@@ -612,7 +612,7 @@ export default function Home() {
                   {
                     open3 ? <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                       <div>
-                        <Image src={brand} width={90} height={80} />
+                        <Image src={brand} width={90} height={80} alt="Description"/>
                       </div>
                       <div style={{ fontFamily: '"Guardian-EgypTT", "Charter", "Charter Bitstream", "Cambria", "Noto Serif Light", "Droid Serif", "Georgia", "serif"' }}>
                         <p style={{ fontSize: '1.4rem', color: '#222222' }}>Kingdom Collection</p>
@@ -633,10 +633,10 @@ export default function Home() {
             <div className={style.text}>[load_more_reviews]</div>
             <div className={style.text}>Photos from reviews</div>
             <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-              <Image src={img1} width={200} height={200} style={{ borderRadius: '12px' }} />
-              <Image src={img1} width={200} height={200} style={{ borderRadius: '12px' }} />
-              <Image src={img1} width={200} height={200} style={{ borderRadius: '12px' }} />
-              <Image src={img1} width={200} height={200} style={{ borderRadius: '12px' }} />
+              <Image src={img1} width={200} height={200} style={{ borderRadius: '12px' }} alt="Description"/>
+              <Image src={img1} width={200} height={200} style={{ borderRadius: '12px' }} alt="Description"/>
+              <Image src={img1} width={200} height={200} style={{ borderRadius: '12px' }} alt="Description"/>
+              <Image src={img1} width={200} height={200} style={{ borderRadius: '12px' }} alt="Description"/>
 
             </div>
             <div className={style.text}>Explore related searches</div>
