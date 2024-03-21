@@ -554,7 +554,7 @@ export default function Home() {
                       </div>
                       <div style={{ display: 'flex', flexDirection: 'row', fontSize: '.9rem', color: '#222222', alignItems: 'center', gap: '10' }}>
                         <Image src={hands} width={50} height={50} alt="Description" />
-                        <p>Kindom Collection Purchase Protection: Shop confidently on Kingdom Collection knowing if something goes wrong with an order we've got your back for all eligible purchases  <span style={{ fontSize: '1rem', borderBottom: '1px solid black', cursor: 'pointer' }}>see programme terms</span></p>
+                        <p>Kindom Collection Purchase Protection: Shop confidently on Kingdom Collection knowing if something goes wrong with an order we ve got your back for all eligible purchases  <span style={{ fontSize: '1rem', borderBottom: '1px solid black', cursor: 'pointer' }}>see programme terms</span></p>
                       </div>
                     </div> : <h1></h1>
                   }
