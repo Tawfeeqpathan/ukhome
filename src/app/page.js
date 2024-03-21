@@ -176,7 +176,7 @@ export default function Home() {
                         {item}
                       </option>
 
-                    )) : null
+                    )) : <h1>...</h1>
                     }
                   </select>
                   </div>
@@ -220,7 +220,7 @@ export default function Home() {
                           <p>Gift wrapping available <span style={{ fontSize: '1rem', borderBottom: '1px dashed black', cursor: 'pointer' }}>See details</span></p>
                         </div>
                         <div >
-                          Great King Leonidas Sparta 300 Movie Helmet Battle Damage Edition Best For Valentine's Gift For Him
+                          Great King Leonidas Sparta 300 Movie Helmet Battle Damage Edition Best For Valentine s Gift For Him
 
                         </div>
                         <div style={{ marginTop: '2rem', display: 'flex', gap: '-1px', flexDirection: 'column' }}>
@@ -232,7 +232,7 @@ export default function Home() {
 
 
                         </div>
-                      </div> : null
+                      </div> : <h1>loading</h1>
                     }
                   </div>
                   <div>
@@ -249,9 +249,9 @@ export default function Home() {
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'row', fontSize: '.9rem', color: '#222222', alignItems: 'center', gap: '10' }}>
                           <Image src={hands} width={50} height={50} alt="Description"/>
-                          <p>Kindom Collection Purchase Protection: Shop confidently on Kingdom Collection knowing if something goes wrong with an order, we've got your back for all eligible purchases - <span style={{ fontSize: '1rem', borderBottom: '1px solid black', cursor: 'pointer' }}>see programme terms</span></p>
+                          <p>Kindom Collection Purchase Protection: Shop confidently on Kingdom Collection knowing if something goes wrong with an order we have got your back for all eligible purchases<span style={{ fontSize: '1rem', borderBottom: '1px solid black', cursor: 'pointer' }}>see programme terms</span></p>
                         </div>
-                      </div> : null
+                      </div> : <h1>...</h1>
                     }
                   </div>
                   <div>
@@ -271,7 +271,7 @@ export default function Home() {
                         </div>
 
                       </div>
-                        : null
+                        : <h1>...</h1>
                     }
                   </div>
 
@@ -552,23 +552,6 @@ export default function Home() {
                         <FaHand />
                         <p>Handmade</p>
                       </div>
-                      <div style={{ display: 'flex', fontSize: '1rem', color: '#222222', flexDirection: 'row', alignItems: 'center', marginBottom: '-1.2rem', gap: '10px' }}>
-                        <IoLocationSharp style={{ fontSize: '1.2rem' }} />
-                        <p>Delivery from India</p>
-                      </div>
-                      <div style={{ display: 'flex', flexDirection: 'row', fontSize: '1rem', color: '#222222', alignItems: 'center', marginBottom: '-1.2rem', gap: '10px' }}>
-                        <GiCrumblingBall style={{ fontSize: '1.2rem' }} />
-                        <p>Materials: Iron, Liner, Chin straps, Wooden Stand</p>
-                      </div>
-                      <div style={{ display: 'flex', flexDirection: 'row', fontSize: '1rem', color: '#222222', marginBottom: '-1.4rem', gap: '10px' }}>
-                        <TbRulerMeasure style={{ paddingTop: '1rem', fontSize: '1.2rem' }} />
-                        <div>
-                          <p>Width: 9 inches</p>
-                          <p>Height: 10 inches</p>
-                          <p>Depth: 10 inches</p>
-                        </div>
-
-                      </div>
                       <div style={{ display: 'flex', flexDirection: 'row', fontSize: '1rem', color: '#222222', alignItems: 'center', gap: '10px' }}>
                         <PiGiftFill style={{ fontSize: '1.2rem' }} />
                         <p>Gift wrapping available <span style={{ fontSize: '1rem', borderBottom: '1px dashed black', cursor: 'pointer' }}>See details</span></p>
@@ -578,14 +561,10 @@ export default function Home() {
                       </div>
                       <div style={{ marginTop: '2rem', display: 'flex', gap: '-1px', flexDirection: 'column' }}>
                         <span>Helmet Comes With Wooden Stand</span> <br />
-                        <span>Material: Steel/Iron</span><br />
                         <span>Size: Height 10 Inches Approx</span><br />
                         <span>Standard Size Fits Almost All Adults</span><br />
-                        <a href="www.etsy.com/shop/Kingdom Collection" style={{ color: '#222222' }}>www.etsy.com/shop/Kingdom Collection</a>
-
-
                       </div>
-                    </div> : null
+                    </div> : <h1></h1>
                   }
                 </div>
                 <div>
@@ -604,7 +583,7 @@ export default function Home() {
                         <Image src={hands} width={50} height={50} alt="Description"/>
                         <p>Kindom Collection Purchase Protection: Shop confidently on Kingdom Collection knowing if something goes wrong with an order, we've got your back for all eligible purchases - <span style={{ fontSize: '1rem', borderBottom: '1px solid black', cursor: 'pointer' }}>see programme terms</span></p>
                       </div>
-                    </div> : null
+                    </div> : <h1></h1>
                   }
                 </div>
                 <div>
@@ -624,7 +603,7 @@ export default function Home() {
                       </div>
 
                     </div>
-                      : null
+                      : <h1></h1>
                   }
                 </div>
 
