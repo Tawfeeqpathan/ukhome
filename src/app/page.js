@@ -25,7 +25,7 @@ import { BsBox2 } from "react-icons/bs";
 import ricon from '../../public/ricon.jpg';
 import { useParams } from 'react-router-dom';
 import dotenv from 'dotenv';
- dotenv.config();
+dotenv.config();
 export default function Home() {
   const [open, setOpen] = useState(false)
   const [open2, setOpen2] = useState(false)
@@ -41,7 +41,7 @@ export default function Home() {
   const apiUrl = `https://kingdomcollection.uk/wp-json/wc/v3/products`; // Adjust the URL as needed
   const reviewUrl = `https://kingdomcollection.uk/wp-json/wc/v3/products/reviews/?520`;
 
- 
+
   // Concatenate API key and secret with a colo
   const credentials = `${apiKey}:${apiSecret}`;
 
@@ -63,13 +63,13 @@ export default function Home() {
 
   // Make the fetch request
   useEffect(() => {
-     // Parse the query string from the URL
-     const queryParams = new URLSearchParams(window.location.search);
-     // Get the value of the 'product_id' parameter
-     const id = queryParams.get('product_id');
-     // Update the state with the product ID
-     setProductId(id);
-     //console.log("id",id);
+    // Parse the query string from the URL
+    const queryParams = new URLSearchParams(window.location.search);
+    // Get the value of the 'product_id' parameter
+    const id = queryParams.get('product_id');
+    // Update the state with the product ID
+    setProductId(id);
+    //console.log("id",id);
     fetch(`https://kingdomcollection.uk/wp-json/wc/v3/products/${id}`, requestOptions)
       .then(response => {
         if (!response.ok) {
@@ -78,7 +78,7 @@ export default function Home() {
         return response.json();
       })
       .then(products => {
-       // console.log('Products:', products);
+        // console.log('Products:', products);
         setData(products);
       })
       .catch(error => {
@@ -126,7 +126,7 @@ export default function Home() {
   const handleDiv3 = () => {
     setOpen3(!open3)
   }
- 
+
   return (
     data ? <>
       <Header />
@@ -146,17 +146,17 @@ export default function Home() {
                   </div>
                   <div className={style.des}>{data?.name}</div>
                   <div className={style.stars}>
-                  <ReactStars
-                          count={5}
-                          size={20}
-                          activeColor="#222222"
-                          value={5}
-                          color='#222222'
-                        />
+                    <ReactStars
+                      count={5}
+                      size={20}
+                      activeColor="#222222"
+                      value={5}
+                      color='#222222'
+                    />
                   </div>
                   <div className={style.check}>
                     <IoCheckmark style={{ color: '#5379DE', fontSize: '20px' }} />
-                    <p className={style.checkP}> Arrives soon! Get it by </p>
+                    <p className={style.checkP}> Arrives soon Get it by </p>
                     {/* <span style={{ borderBottom: '1px dashed black' }}>06-07 Mar</span> if you order today */}
                   </div>
                   <div className={style.check} style={{ marginTop: '-1rem' }}>
@@ -170,7 +170,7 @@ export default function Home() {
                     <option>
                       choose an option
                     </option>
-                    {data?.attributes[0].options ? data.attributes[0].options.map((item,index) => (
+                    {data?.attributes[0].options ? data.attributes[0].options.map((item, index) => (
 
                       <option value={item} key={index}>
                         {item}
@@ -187,7 +187,7 @@ export default function Home() {
                   </div>
                   <div className={style.starReview}>
                     <Image src={starimg} width={60} height={35} alt="Description" />
-                    <p className={style.checkP}><span style={{ fontFamily: 'bold', fontSize: '1rem' }}>Star Product!</span> This product consistently earned 5-star reviews, dispatched on time, and</p>
+                    <p className={style.checkP}><span style={{ fontFamily: 'bold', fontSize: '1rem' }}>Star Product</span> This product consistently earned 5-star reviews, dispatched on time and</p>
                   </div>
 
                   <div>
@@ -202,37 +202,15 @@ export default function Home() {
                           <IoLocationSharp style={{ fontSize: '1.2rem' }} />
                           <p>Delivery from India</p>
                         </div>
-                        <div style={{ display: 'flex', flexDirection: 'row', fontSize: '1rem', color: '#222222', alignItems: 'center', marginBottom: '-1.2rem', gap: '10px' }}>
-                          <GiCrumblingBall style={{ fontSize: '1.2rem' }} />
-                          <p>Materials: Iron, Liner, Chin straps, Wooden Stand</p>
-                        </div>
-                        <div style={{ display: 'flex', flexDirection: 'row', fontSize: '1rem', color: '#222222', marginBottom: '-1.4rem', gap: '10px' }}>
-                          <TbRulerMeasure style={{ paddingTop: '1rem', fontSize: '1.2rem' }} />
-                          <div>
-                            <p>Width: 9 inches   </p>
-                            <p>Height: 10 inches </p>
-                            <p>Depth: 10 inches  </p>
-                          </div>
-
-                        </div>
-                        <div style={{ display: 'flex', flexDirection: 'row', fontSize: '1rem', color: '#222222', alignItems: 'center', gap: '10px' }}>
-                          <PiGiftFill style={{ fontSize: '1.2rem' }} />
-                          <p>Gift wrapping available <span style={{ fontSize: '1rem', borderBottom: '1px dashed black', cursor: 'pointer' }}>See details</span></p>
-                        </div>
                         <div >
                           Great King Leonidas Sparta 300 Movie Helmet Battle Damage Edition Best For Valentine s Gift For Him
 
                         </div>
                         <div style={{ marginTop: '2rem', display: 'flex', gap: '-1px', flexDirection: 'column' }}>
                           <span>Helmet Comes With Wooden Stand</span> <br />
-                          <span>Material: Steel/Iron</span><br />
-                          <span>Size: Height 10 Inches Approx</span><br />
-                          <span>Standard Size Fits Almost All Adults</span><br />
-                          <a href="www.etsy.com/shop/Kingdom Collection" style={{ color: '#222222' }}>www.etsy.com/shop/Kingdom Collection</a>
-
-
+                          <span>Material Steel/Iron</span><br />
                         </div>
-                      </div> : <h1>loading</h1>
+                      </div> : <h1></h1>
                     }
                   </div>
                   <div>
@@ -248,10 +226,10 @@ export default function Home() {
                           <p> <span style={{ fontSize: '.9rem', borderBottom: '1px dashed gay', cursor: 'pointer' }}>Returns & exchanges accepted </span> Within 30 days</p>
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'row', fontSize: '.9rem', color: '#222222', alignItems: 'center', gap: '10' }}>
-                          <Image src={hands} width={50} height={50} alt="Description"/>
-                          <p>Kindom Collection Purchase Protection: Shop confidently on Kingdom Collection knowing if something goes wrong with an order we have got your back for all eligible purchases<span style={{ fontSize: '1rem', borderBottom: '1px solid black', cursor: 'pointer' }}>see programme terms</span></p>
+                          <Image src={hands} width={50} height={50} alt="Description" />
+                          <p>Kindom Collection Purchase Protection Shop confidently on Kingdom Collection knowing if something goes wrong with an order we have got your back for all eligible purchases<span style={{ fontSize: '1rem', borderBottom: '1px solid black', cursor: 'pointer' }}>see programme terms</span></p>
                         </div>
-                      </div> : <h1>...</h1>
+                      </div> : <h1></h1>
                     }
                   </div>
                   <div>
@@ -259,11 +237,11 @@ export default function Home() {
                     {
                       open3 ? <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                         <div>
-                          <Image src={brand} width={90} height={80} alt="Description"/>
+                          <Image src={brand} width={90} height={80} alt="Description" />
                         </div>
                         <div style={{ fontFamily: '"Guardian-EgypTT", "Charter", "Charter Bitstream", "Cambria", "Noto Serif Light", "Droid Serif", "Georgia", "serif"' }}>
                           <p style={{ fontSize: '1.4rem', color: '#222222' }}>Kingdom Collection</p>
-                          <p style={{ fontSize: '1rem' }}>We are here to help you with your queries and suggestions!</p>
+                          <p style={{ fontSize: '1rem' }}>We are here to help you with your queries and suggestions</p>
                           <p className={style.toggleBtn}> <span style={{ paddingRight: '1rem', fontSize: '.9rem', width: '3rem' }}><FaRegHeart /> </span> Follow me on instagram</p>
                           <button className={style.cartBtn} style={{ backgroundColor: '#fff', color: 'black', border: '2px solid black' }}>
                             Message Kingdom Collection
@@ -271,7 +249,7 @@ export default function Home() {
                         </div>
 
                       </div>
-                        : <h1>...</h1>
+                        : <h1></h1>
                     }
                   </div>
 
@@ -279,13 +257,13 @@ export default function Home() {
                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginLeft: '2rem' }}>
                   <p style={{ fontSize: '1.6rem' }} className={style.text}> 317 reviews</p>
                   <div className={style.stars}>
-                  <ReactStars
-                          count={5}
-                          size={30}
-                          activeColor="#222222"
-                          value={5}
-                          color='#222222'
-                        />
+                    <ReactStars
+                      count={5}
+                      size={30}
+                      activeColor="#222222"
+                      value={5}
+                      color='#222222'
+                    />
 
                   </div>
                 </div>
@@ -309,7 +287,7 @@ export default function Home() {
                   </div>
                 </div>
                 {
-                 review? review.map((item, index) => (
+                  review ? review.map((item, index) => (
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', borderBottom: '1px solid #EAEAEA', marginBottom: '1rem', width: '96%' }} key={index}>
                       <div style={{ display: 'flex', width: '65%', flexDirection: 'column', gap: '5px' }}>
                         <ReactStars
@@ -360,15 +338,15 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                  )):<h1>...</h1>
+                  )) : <h1>...</h1>
                 }
                 <div className={style.text}>[load_more_reviews]</div>
                 <div className={style.text}>Photos from reviews</div>
                 <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                  <Image src={img1} width={150} height={150} style={{ borderRadius: '12px' }} alt="Description"/>
-                  <Image src={img1} width={150} height={150} style={{ borderRadius: '12px' }} alt="Description"/>
-                  <Image src={img1} width={150} height={150} style={{ borderRadius: '12px' }} alt="Description"/>
-                  <Image src={img1} width={150} height={150} style={{ borderRadius: '12px' }} alt="Description"/>
+                  <Image src={img1} width={150} height={150} style={{ borderRadius: '12px' }} alt="Description" />
+                  <Image src={img1} width={150} height={150} style={{ borderRadius: '12px' }} alt="Description" />
+                  <Image src={img1} width={150} height={150} style={{ borderRadius: '12px' }} alt="Description" />
+                  <Image src={img1} width={150} height={150} style={{ borderRadius: '12px' }} alt="Description" />
 
                 </div>
                 <div className={style.text}>Explore related searches</div>
@@ -409,13 +387,13 @@ export default function Home() {
                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginLeft: '2rem' }}>
                   <p style={{ fontSize: '1.6rem' }} className={style.text}> 317 reviews</p>
                   <div className={style.stars}>
-                  <ReactStars
-                          count={5}
-                          size={30}
-                          activeColor="#222222"
-                          value={5}
-                          color='#222222'
-                        />
+                    <ReactStars
+                      count={5}
+                      size={30}
+                      activeColor="#222222"
+                      value={5}
+                      color='#222222'
+                    />
                   </div>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginLeft: '2rem' }}>
@@ -431,14 +409,14 @@ export default function Home() {
                   <div>.</div>
                   <div >
                     <select style={{ marginTop: '1rem', width: '13rem', height: '2.5rem', borderRadius: '12px', border: 'none', background: '#E9E9E9', padding: '3px', cursor: 'pointer' }} className={style.text}>
-                      <option>Sort by:Suggent</option>
+                      <option>Sort bySuggent</option>
                       <option>Suggent</option>
                       <option>Most recent</option>
                     </select>
                   </div>
                 </div>
                 {
-                 review? review.map((item, index) => (
+                  review ? review.map((item, index) => (
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginLeft: '1rem', borderBottom: '1px solid #EAEAEA', marginBottom: '1rem' }} key={index}>
                       <div style={{ display: 'flex', width: '65%', flexDirection: 'column', gap: '10px' }}>
                         <ReactStars
@@ -458,7 +436,7 @@ export default function Home() {
                         </div>
                         <div style={{ display: 'flex', flexDirection: 'row', gap: '10px', alignItems: 'center' }}>
                           <AiFillLike />
-                          <p> Helpful?</p>
+                          <p> Helpful</p>
                         </div>
 
                       </div>
@@ -488,28 +466,28 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                  )):<h1>...</h1>
+                  )) : <h1></h1>
                 }
               </div>
               <div className={style.info}>
-                <div className={style.limited}>Limited Stock! Order Now.</div>
+                <div className={style.limited}>Limited Stock Order Now</div>
                 <div className={style.price}>£{data?.price}</div>
                 <div className={style.choose}>
                   Choose from multiple variations
                 </div>
                 <div className={style.des}> <p>{data?.name}</p></div>
                 <div className={style.stars}>
-                <ReactStars
-                          count={5}
-                          size={20}
-                          activeColor="#222222"
-                          value={5}
-                          color='#222222'
-                        />
+                  <ReactStars
+                    count={5}
+                    size={20}
+                    activeColor="#222222"
+                    value={5}
+                    color='#222222'
+                  />
                 </div>
                 <div className={style.check}>
                   <IoCheckmark style={{ color: '#5379DE', fontSize: '20px' }} />
-                  <p className={style.checkP}>Arrives soon! Get it by  </p>
+                  <p className={style.checkP}>Arrives soon Get it by  </p>
                 </div>
                 <div className={style.check} style={{ marginTop: '-1rem' }}>
                   <IoCheckmark style={{ color: '#5379DE', fontSize: '20px' }} />
@@ -523,7 +501,7 @@ export default function Home() {
                     <option>
                       Color
                     </option>
-                    {data?.attributes[0].options ? data.attributes[0].options.map((item,index) => (
+                    {data?.attributes[0].options ? data.attributes[0].options.map((item, index) => (
 
                       <option value={item} key={index}>
                         {item}
@@ -540,8 +518,8 @@ export default function Home() {
                   </button>
                 </div>
                 <div className={style.starReview}>
-                  <Image src={starimg} width={60} height={35}  alt="Description"/>
-                  <p className={style.checkP}><span style={{ fontFamily: 'bold', fontSize: '1rem' }}>Star Product!</span> This product consistently earned 5-star reviews, dispatched on time, and</p>
+                  <Image src={starimg} width={60} height={35} alt="Description" />
+                  <p className={style.checkP}><span style={{ fontFamily: 'bold', fontSize: '1rem' }}>Star Product</span> This product consistently earned 5-star reviews dispatched on time and</p>
                 </div>
 
                 <div>
@@ -557,12 +535,7 @@ export default function Home() {
                         <p>Gift wrapping available <span style={{ fontSize: '1rem', borderBottom: '1px dashed black', cursor: 'pointer' }}>See details</span></p>
                       </div>
                       <div >
-                        Great King Leonidas Sparta 300 Movie Helmet Battle Damage Edition Best For Valentine's Gift For Him
-                      </div>
-                      <div style={{ marginTop: '2rem', display: 'flex', gap: '-1px', flexDirection: 'column' }}>
-                        <span>Helmet Comes With Wooden Stand</span> <br />
-                        <span>Size: Height 10 Inches Approx</span><br />
-                        <span>Standard Size Fits Almost All Adults</span><br />
+                        Great King Leonidas Sparta 300 Movie Helmet Battle Damage Edition Best For Valentine s Gift For Him
                       </div>
                     </div> : <h1></h1>
                   }
@@ -580,8 +553,8 @@ export default function Home() {
                         <p> <span style={{ fontSize: '.9rem', borderBottom: '1px dashed gay', cursor: 'pointer' }}>Returns & exchanges accepted </span> Within 30 days</p>
                       </div>
                       <div style={{ display: 'flex', flexDirection: 'row', fontSize: '.9rem', color: '#222222', alignItems: 'center', gap: '10' }}>
-                        <Image src={hands} width={50} height={50} alt="Description"/>
-                        <p>Kindom Collection Purchase Protection: Shop confidently on Kingdom Collection knowing if something goes wrong with an order, we've got your back for all eligible purchases - <span style={{ fontSize: '1rem', borderBottom: '1px solid black', cursor: 'pointer' }}>see programme terms</span></p>
+                        <Image src={hands} width={50} height={50} alt="Description" />
+                        <p>Kindom Collection Purchase Protection: Shop confidently on Kingdom Collection knowing if something goes wrong with an order we've got your back for all eligible purchases  <span style={{ fontSize: '1rem', borderBottom: '1px solid black', cursor: 'pointer' }}>see programme terms</span></p>
                       </div>
                     </div> : <h1></h1>
                   }
@@ -591,11 +564,11 @@ export default function Home() {
                   {
                     open3 ? <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                       <div>
-                        <Image src={brand} width={90} height={80} alt="Description"/>
+                        <Image src={brand} width={90} height={80} alt="Description" />
                       </div>
                       <div style={{ fontFamily: '"Guardian-EgypTT", "Charter", "Charter Bitstream", "Cambria", "Noto Serif Light", "Droid Serif", "Georgia", "serif"' }}>
                         <p style={{ fontSize: '1.4rem', color: '#222222' }}>Kingdom Collection</p>
-                        <p style={{ fontSize: '1rem' }}>We are here to help you with your queries and suggestions!</p>
+                        <p style={{ fontSize: '1rem' }}>We are here to help you with your queries and suggestions</p>
                         <p className={style.toggleBtn}> <span style={{ paddingRight: '1rem', fontSize: '.9rem', width: '3rem' }}><FaRegHeart /> </span> Follow me on instagram</p>
                         <button className={style.cartBtn} style={{ backgroundColor: '#fff', color: 'black', border: '2px solid black' }}>
                           Message Kingdom Collection
@@ -612,14 +585,14 @@ export default function Home() {
             <div className={style.text}>[load_more_reviews]</div>
             <div className={style.text}>Photos from reviews</div>
             <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-              <Image src={img1} width={200} height={200} style={{ borderRadius: '12px' }} alt="Description"/>
-              <Image src={img1} width={200} height={200} style={{ borderRadius: '12px' }} alt="Description"/>
-              <Image src={img1} width={200} height={200} style={{ borderRadius: '12px' }} alt="Description"/>
-              <Image src={img1} width={200} height={200} style={{ borderRadius: '12px' }} alt="Description"/>
+              <Image src={img1} width={200} height={200} style={{ borderRadius: '12px' }} alt="Description" />
+              <Image src={img1} width={200} height={200} style={{ borderRadius: '12px' }} alt="Description" />
+              <Image src={img1} width={200} height={200} style={{ borderRadius: '12px' }} alt="Description" />
+              <Image src={img1} width={200} height={200} style={{ borderRadius: '12px' }} alt="Description" />
 
             </div>
             <div className={style.text}>Explore related searches</div>
-            <div className={style.text} style={{ fontSize: '.9rem' }}>[woocommerce_related_products]</div>
+            <div className={style.text} style={{ fontSize: '.9rem' }}>woocommerce_related_products</div>
             <div className={style.text}>Explore more related searches</div>
             <div style={{ display: 'flex', gap: '10px', flexDirection: 'row', flexWrap: 'wrap' }}>
               <button style={{ display: 'flex', padding: '10px', borderRadius: '20px', border: 'none', backgroundColor: '#E9E9E9', }} className={style.text}>
