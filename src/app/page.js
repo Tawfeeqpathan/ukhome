@@ -170,9 +170,9 @@ export default function Home() {
                     <option value=" " selected=" ">
                       choose an option
                     </option>
-                    {data?.attributes[0].options ? data.attributes[0].options.map((item) => (
+                    {data?.attributes[0].options ? data.attributes[0].options.map((item,index) => (
 
-                      <option value={item}>
+                      <option value={item} key={index}>
                         {item}
                       </option>
 
@@ -523,9 +523,9 @@ export default function Home() {
                     <option>
                       Color
                     </option>
-                    {data?.attributes[0].options ? data.attributes[0].options.map((item) => (
+                    {data?.attributes[0].options ? data.attributes[0].options.map((item,index) => (
 
-                      <option value={item}>
+                      <option value={item} key={index}>
                         {item}
                       </option>
 
