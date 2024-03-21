@@ -42,7 +42,7 @@ export default function Home() {
   const reviewUrl = `https://kingdomcollection.uk/wp-json/wc/v3/products/reviews/?520`;
 
  
-  // Concatenate API key and secret with a colon
+  // Concatenate API key and secret with a colo
   const credentials = `${apiKey}:${apiSecret}`;
 
   // Base64 encode the credentials
