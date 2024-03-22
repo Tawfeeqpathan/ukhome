@@ -45,6 +45,7 @@ export default function Page() {
     },
   ]
   const [category,setCategory] = useState([])
+  const [allproduct,setAllproduct] = useState([])
 
   const [imgArray, setImgArray] = useState([
     { url: c1 },
@@ -133,6 +134,22 @@ const merged2 = mergeArrays2(gifts, giftsImgs);
       headers: headers,
     };
     //console.log("id",id);
+    fetch(`https://kingdomcollection.uk/wp-json/wc/v3/products`, requestOptions)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(products => {
+       console.log('Products page:',products       );
+setAllproduct(products)
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch request:', error);
+    });
+
+
     fetch(`https://kingdomcollection.uk/wp-json/wp/v2/categories`, requestOptions)
       .then(response => {
         if (!response.ok) {
@@ -171,14 +188,34 @@ const merged2 = mergeArrays2(gifts, giftsImgs);
   return (
    <div style={{overflowX:'hidden',boxSizing:'border-box',paddingLeft:'0',paddingRight:'0'}} className={style.mainPage}>
    <Header/>
+   <div style={{display:'flex',justifyContent:'center',flexDirection:'column',marginTop:'2rem'}}>
+    <div style={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'row',flexWrap:'wrap',gap:'15px'}}>
+      {
+        allproduct ? allproduct.slice(0,4).map((i)=>(
+        <Link href={`/products/${i.id}`}>
+          <div className={style.gitfProduct} style={{padding:'0',border:'.1px solid gray',}} key={i.id}  >
+          <Image src={i.images[0].src} width={250} height={190} style={{borderRadius:'12px'}} alt='img'/>
+        
+          <p className={style.text} style={{fontWeight:'400',width:'90%',fontSize:'.8rem',display:'flex',alignItems:'center',paddingLeft:'1rem'}}>{i.categories[0].name}</p>
+         
+      
+          </div>
+        </Link>
+        )):''
+      }
+    </div>
+
+
+  
+   </div>
    <div style={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
     <h1 className={style.text} style={{fontSize:'1.5rem',color:'#222222'}}>Shop by Category</h1>
     <div style={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'row',flexWrap:'wrap',gap:'15px'}} className={style.cate}>
       {
-        merged ?  merged.map((i,index)=>(
+        merged ?  merged.slice(0,4).map((i,index)=>(
          <Link href={i.productlink} key={i.productlink}>
            <div className={style.categoryProduct}  >
-          <Image src={i.imageUrl.src} width={190} height={270} style={{borderRadius:'12px'}} alt='img'/>
+          <Image src={i.imageUrl.src} width={220} height={200} style={{borderRadius:'50%'}} alt='img'/>
       <p>{i.productName}</p>
           </div>
          </Link>
@@ -190,17 +227,19 @@ const merged2 = mergeArrays2(gifts, giftsImgs);
 
 
    <div style={{display:'flex',justifyContent:'center',flexDirection:'column',marginLeft:'1rem',marginTop:'2rem'}}>
-    <h1 className={style.giftHead} >Shop our popular gift categories</h1>
-    <div style={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'row',flexWrap:'wrap',gap:'15px'}}>
+    <h1 className={style.giftHead} >Shop our popular Products</h1>
+    <div style={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'row',flexWrap:'wrap',gap:'20px'}}>
       {
-       merged2 ? merged2.map((i)=>(
-          <div className={style.gitfProduct} style={{padding:'0',border:'.1px solid gray',}} key={i.imageUrl.src}  >
-          <Image src={i.imageUrl.src} width={250} height={190} style={{borderRadius:'12px'}} alt='img'/>
+      allproduct ? allproduct.slice(4,8).map((i)=>(
+         <Link href={`/products/${i.id}`}>
+          <div className={style.gitfProduct} style={{padding:'0',border:'.1px solid gray',height:'auto',width:'auto'}} key={i.id}  >
+          <Image src={i.images[0].src} width={250} height={160} style={{borderRadius:'12px',}} alt='img'/>
         
-          <p className={style.text} style={{fontWeight:'400',width:'full'}}>{i.title}</p>
+          <p className={style.text} style={{fontWeight:'400',width:'full'}}>{i.categories[0].name}</p>
          
       
           </div>
+         </Link>
         )):''
       }
     </div>
@@ -208,13 +247,13 @@ const merged2 = mergeArrays2(gifts, giftsImgs);
 
   
    </div>
-   <div style={{display:'flex',justifyContent:'center',flexDirection:'column',marginLeft:'1rem',marginTop:'2rem'}}>
-    <h1 className={style.text} style={{fontSize:'1.5rem',color:'#222222',display:'flex',alignItems:'center',cursor:'pointer'}}>Fresh from the blog <GoArrowRight /></h1>
+   <div style={{display:'flex',justifyContent:'center',flexDirection:'column',marginTop:'2rem'}}>
+    <h1 className={style.text} style={{fontSize:'1.5rem',color:'#222222',display:'flex',alignItems:'center',cursor:'pointer',marginLeft:'1rem'}}>Fresh from the blog <GoArrowRight /></h1>
     <div style={{display:'flex',justifyContent:'center',flexDirection:'row',flexWrap:'wrap',gap:'15px'}}>
       {
         blogs.map((i,index)=>(
           <div key={index} className={style.homeProduct} style={{padding:'0',border:'.1px solid gray',alignItems:'flex-start',gap:'10px',}} >
-          <Image src={i.image} width={450} height={320} style={{borderRadius:'12px'}} alt='img'/>
+          <Image src={i.image} height={250} style={{borderRadius:'12px',width:'100%'}} alt='img'/>
         
           <div className={style.Blogtext}>{i.tag}</div>
           <div className={style.text} style={{fontWeight:'600',paddingLeft:'2rem'}}>{i.title}</div>
@@ -244,18 +283,18 @@ const merged2 = mergeArrays2(gifts, giftsImgs);
           <h3>Shop</h3>
           <ul>
             <li>  <a href="#"> Gift cards </a> </li> 
-            <li>  <a href="#"> Etsy Registry </a> </li> 
+            <li>  <a href="#">  Registry </a> </li> 
             <li>  <a href="#"> Sitemap </a> </li> 
-            <li>  <a href="#"> Etsy blog </a> </li> 
-            <li>  <a href="#"> Etsy United Kingdom </a> </li> 
-            <li>  <a href="#"> Etsy Germany </a> </li> 
-            <li>  <a href="#"> Etsy Canada </a> </li> 
+            <li>  <a href="#">  blog </a> </li> 
+            <li>  <a href="#"> United Kingdom </a> </li> 
+            <li>  <a href="#"> Germany </a> </li> 
+            <li>  <a href="#">Canada </a> </li> 
           </ul>
         </div>
         <div className={style.column}>
           <h3>Sell</h3>
           <ul>
-            <li>  <a href="#"> Sell on Etsy </a> </li> 
+            <li>  <a href="#"> Sell </a> </li> 
             <li>  <a href="#"> Teams </a> </li> 
             <li>  <a href="#"> Forums </a> </li> 
             <li>  <a href="#"> Affiliates & Creators </a> </li> 
@@ -264,7 +303,7 @@ const merged2 = mergeArrays2(gifts, giftsImgs);
         <div className={style.column}>
           <h3>About</h3>
           <ul>
-            <li>  <a href="#"> Etsy, Inc. </a> </li> 
+            <li>  <a href="#">  Inc. </a> </li> 
             <li>  <a href="#"> Policies </a> </li> 
             <li>  <a href="#"> Investors </a> </li> 
             <li>  <a href="#"> Careers </a> </li> 
@@ -284,12 +323,11 @@ const merged2 = mergeArrays2(gifts, giftsImgs);
     </footer>
     <footer className={style.footerEnd}>
       <div className={style.footerLeft}>
-        <button className={style.button}>Button</button>
+        <p><a href="#" > &copy; 2024  Inc. </a></p>
       </div>
       <div className={style.footerRight}>
       <div className={style.column} >
           <ul style={{ display:'flex',  flexDirection:'row',gap:'20px',justifyContent:'center',alignItems:'center'}}>
-            <li>  <a href="#"> &copy; 2024 Etsy, Inc. </a> </li> 
            <li>  <a href="#">  Terms of Use</a> </li> 
             <li>  <a href="#"> Privacy </a> </li> 
             <li>  <a href="#"> Interest-based ads </a> </li> 
