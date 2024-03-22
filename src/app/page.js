@@ -192,8 +192,8 @@ setAllproduct(products)
     <div style={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'row',flexWrap:'wrap',gap:'15px'}}>
       {
         allproduct ? allproduct.slice(0,4).map((i)=>(
-        <Link href={`/products/${i.id}`}>
-          <div className={style.gitfProduct} style={{padding:'0',border:'.1px solid gray',}} key={i.id}  >
+        <Link href={`/products/${i.id}`}  key={i.id}>
+          <div className={style.gitfProduct} style={{padding:'0',border:'.1px solid gray',}}  >
           <Image src={i.images[0].src} width={250} height={190} style={{borderRadius:'12px'}} alt='img'/>
         
           <p className={style.text} style={{fontWeight:'400',width:'90%',fontSize:'.8rem',display:'flex',alignItems:'center',paddingLeft:'1rem'}}>{i.categories[0].name}</p>
@@ -231,8 +231,8 @@ setAllproduct(products)
     <div style={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'row',flexWrap:'wrap',gap:'20px'}}>
       {
       allproduct ? allproduct.slice(4,8).map((i)=>(
-         <Link href={`/products/${i.id}`}>
-          <div className={style.gitfProduct} style={{padding:'0',border:'.1px solid gray',height:'auto',width:'auto'}} key={i.id}  >
+         <Link href={`/products/${i.id}`} key={i.id}>
+          <div className={style.gitfProduct} style={{padding:'0',border:'.1px solid gray',height:'auto',width:'auto'}}   >
           <Image src={i.images[0].src} width={250} height={160} style={{borderRadius:'12px',}} alt='img'/>
         
           <p className={style.text} style={{fontWeight:'400',width:'full'}}>{i.categories[0].name}</p>
