@@ -6,7 +6,7 @@ import Image from 'next/image'
 import img from "../../public/img1.png"
 import { GoArrowRight } from "react-icons/go";
 import Link from 'next/link'
-export default function page() {
+export default function Page() {
   const [category,setCategory] = useState([])
   useEffect(() => {
     console.log(`Database name is ${process.env.APIKEY} ${process.env.APISECERT}`);
