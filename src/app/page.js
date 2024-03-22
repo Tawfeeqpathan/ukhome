@@ -4,10 +4,112 @@ import Header from './Header'
 import style from '../app/products/styles.module.css'
 import Image from 'next/image'
 import img from "../../public/img1.png"
+import c1 from "../../public/decoration.jpeg"
+import c2 from "../../public/fashion-mag.jpeg"
+import c3 from "../../public/furniture.png"
+import c4 from "../../public/images.jpg"
+import c5 from "../../public/interor.jpg"
+import c6 from "../../public/life.jpg"
+import c7 from "../../public/music.jpg"
+import c8 from "../../public/photgraph.jpg"
+import c9 from "../../public/style.jpg"
+import c10 from "../../public/uncatego.png"
+import g1 from "../../public/g1.png"
+import g2 from "../../public/g2.png"
+import g3 from "../../public/g3.png"
+import g4 from "../../public/g5.jpg"
+import b1 from "../../public/b1.jpg"
+import b2 from "../../public/b4.jpg"
+import b3 from "../../public/b3.jpg"
 import { GoArrowRight } from "react-icons/go";
 import Link from 'next/link'
 export default function Page() {
+  const blogs = [
+    {
+      title:'9 Comfy Throws for Cosy Autumn Vibes',
+      tag:'Shopping Guides',
+      image:b1,
+      des :"Embrace the snuggling season with stylish throws that will warm your hearts."
+    },
+    {
+      title:'14 Beautiful Bags That Express Your Unique Style',
+      tag:'Shopping Guides',
+      image:b2,
+      des:"Amp up your fashion game with bags that perfectly match your aesthetic."
+    },
+    {
+      title:'The Best Gift Ideas for Kids of All Ages',
+      tag:'Gifts Guides',
+      image:b3,
+      des:"Shop the sweetest surprises for all little ones in your family–these gifts for kids will definitely earn you some brownie points."
+    },
+  ]
   const [category,setCategory] = useState([])
+
+  const [imgArray, setImgArray] = useState([
+    { url: c1 },
+    { url: c2 },
+    { url: c3 },
+    { url: c4 },
+    { url: c5 },
+    { url: c6 },
+    { url: c7 },
+    { url: c8 },
+    { url: c9 },
+    { url: c10 }
+])
+  const gifts = [{title:"Anniversary"},{title:"Gifts for Him"},{title:"Gifts for Her"},{title:"Wedding gift"}]
+  const giftsImgs = [g1,g2,g3,g4]
+
+  function mergeArrays(category, imgArray) {
+    const mergedArray = [];
+
+    // Iterate through the arrays and merge objects
+    for (let i = 0; i < category.length; i++) {
+        // Create a new object with product name and corresponding image
+       
+        const mergedObject = {
+            productName: category[i].name,
+            productlink: category[i].link,
+            imageUrl: imgArray[i].url
+        };
+        // Add merged object to the new array
+        mergedArray.push(mergedObject);
+    }
+
+    return mergedArray;
+}
+
+// Call the function to merge arrays
+const merged= mergeArrays(category, imgArray);
+
+
+
+  function mergeArrays2(gifts, giftsImgs) {
+    // Check if arrays have the same length
+    // if (category.length !== imgArray.length) {
+    //     throw new Error("Arrays must have the same length");
+    // }
+
+    // Create a new array to store merged objects
+    const mergedArray2 = [];
+
+    // Iterate through the arrays and merge objects
+    for (let i = 0; i < gifts.length; i++) {
+        // Create a new object with product name and corresponding image
+        const mergedObject = {
+            title: gifts[i].title,
+            imageUrl: giftsImgs[i]
+        };
+        // Add merged object to the new array
+        mergedArray2.push(mergedObject);
+    }
+
+    return mergedArray2;
+}
+
+// Call the function to merge arrays
+const merged2 = mergeArrays2(gifts, giftsImgs);
   useEffect(() => {
     console.log(`Database name is ${process.env.APIKEY} ${process.env.APISECERT}`);
     const apiKey = process.env.apikey  //|| 'ck_503e81308c5e908b9050b367e98d837395f578c4'; // Use environment variable or default value
@@ -41,6 +143,8 @@ export default function Page() {
       .then(products => {
          console.log('Products page:');
          setCategory(products);
+         mergeArrays()
+         mergeArrays2()
       })
       .catch(error => {
         console.error('There was a problem with the fetch request:', error);
@@ -60,23 +164,25 @@ export default function Page() {
         console.error('There was a problem with the fetch request:', error);
       });
       
-  }, [category])
- 
+   
+    
+  }, [])
+  
   return (
    <div style={{overflowX:'hidden',boxSizing:'border-box',paddingLeft:'0',paddingRight:'0'}} className={style.mainPage}>
    <Header/>
    <div style={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
     <h1 className={style.text} style={{fontSize:'1.5rem',color:'#222222'}}>Shop by Category</h1>
-    <div style={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'row',flexWrap:'wrap',gap:'15px'}}>
+    <div style={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'row',flexWrap:'wrap',gap:'15px'}} className={style.cate}>
       {
-        category?.map((i,index)=>(
-         <Link href={i.link} key={i.link}>
+        merged ?  merged.map((i,index)=>(
+         <Link href={i.productlink} key={i.productlink}>
            <div className={style.categoryProduct}  >
-          <Image src={img} width={190} height={270} style={{borderRadius:'12px'}}/>
-      <p>{i.name}</p>
+          <Image src={i.imageUrl.src} width={190} height={270} style={{borderRadius:'12px'}} alt='img'/>
+      <p>{i.productName}</p>
           </div>
          </Link>
-        ))
+        )):''
       }
     </div>
    </div>
@@ -87,15 +193,15 @@ export default function Page() {
     <h1 className={style.giftHead} >Shop our popular gift categories</h1>
     <div style={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'row',flexWrap:'wrap',gap:'15px'}}>
       {
-        [1,2,3,4].map((i)=>(
-          <div className={style.gitfProduct} style={{padding:'0',border:'.1px solid gray',}} key={i} >
-          <Image src={img} width={250} height={190} style={{borderRadius:'12px'}}/>
+       merged2 ? merged2.map((i)=>(
+          <div className={style.gitfProduct} style={{padding:'0',border:'.1px solid gray',}} key={i.imageUrl.src}  >
+          <Image src={i.imageUrl.src} width={250} height={190} style={{borderRadius:'12px'}} alt='img'/>
         
-          <p className={style.text} style={{fontWeight:'600',width:'full'}}>Home living</p>
+          <p className={style.text} style={{fontWeight:'400',width:'full'}}>{i.title}</p>
          
       
           </div>
-        ))
+        )):''
       }
     </div>
 
@@ -106,13 +212,13 @@ export default function Page() {
     <h1 className={style.text} style={{fontSize:'1.5rem',color:'#222222',display:'flex',alignItems:'center',cursor:'pointer'}}>Fresh from the blog <GoArrowRight /></h1>
     <div style={{display:'flex',justifyContent:'center',flexDirection:'row',flexWrap:'wrap',gap:'15px'}}>
       {
-        [1,2,3].map((i)=>(
-          <div key={i} className={style.homeProduct} style={{padding:'0',border:'.1px solid gray',alignItems:'flex-start',gap:'10px'}} >
-          <Image src={img} width={400} height={400} style={{borderRadius:'12px'}} alt='img'/>
+        blogs.map((i,index)=>(
+          <div key={index} className={style.homeProduct} style={{padding:'0',border:'.1px solid gray',alignItems:'flex-start',gap:'10px',}} >
+          <Image src={i.image} width={450} height={320} style={{borderRadius:'12px'}} alt='img'/>
         
-          <div className={style.Blogtext}>Home living</div>
-          <div className={style.text} style={{fontWeight:'600',paddingLeft:'2rem'}}>Home living siuuisa jashasuu sjhaush</div>
-          <div className={style.Blogtext} >Home xsds msnu sanuhs nsuasa hsua  living</div>
+          <div className={style.Blogtext}>{i.tag}</div>
+          <div className={style.text} style={{fontWeight:'600',paddingLeft:'2rem'}}>{i.title}</div>
+          <div className={style.Blogtext} style={{width:'20rem'}} >{i.des}</div>
          
       
           </div>
