@@ -7,7 +7,7 @@ import img from "../../public/img1.png"
 import { GoArrowRight } from "react-icons/go";
 import Link from 'next/link'
 export default function page() {
-  const [category,setCategory] = useState()
+  const [category,setCategory] = useState([])
   useEffect(() => {
     console.log(`Database name is ${process.env.APIKEY} ${process.env.APISECERT}`);
     const apiKey = process.env.apikey  //|| 'ck_503e81308c5e908b9050b367e98d837395f578c4'; // Use environment variable or default value
@@ -39,7 +39,7 @@ export default function page() {
         return response.json();
       })
       .then(products => {
-         console.log('Products:', products);
+         console.log('Products page:');
          setCategory(products);
       })
       .catch(error => {
@@ -53,14 +53,14 @@ export default function page() {
         return response.json();
       })
       .then(products => {
-         console.log('Products:', products);
+         //console.log('Products:', products);
          
       })
       .catch(error => {
         console.error('There was a problem with the fetch request:', error);
       });
       
-  }, [])
+  }, [category])
  
   return (
    <div style={{overflowX:'hidden',boxSizing:'border-box',paddingLeft:'0',paddingRight:'0'}} className={style.mainPage}>
@@ -69,8 +69,8 @@ export default function page() {
     <h1 className={style.text} style={{fontSize:'1.5rem',color:'#222222'}}>Shop by Category</h1>
     <div style={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'row',flexWrap:'wrap',gap:'15px'}}>
       {
-        category?.map((i)=>(
-         <Link href={i.link}>
+        category?.map((i,index)=>(
+         <Link href={i.link} key={i.link}>
            <div className={style.categoryProduct}  >
           <Image src={img} width={190} height={270} style={{borderRadius:'12px'}}/>
       <p>{i.name}</p>
@@ -88,7 +88,7 @@ export default function page() {
     <div style={{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'row',flexWrap:'wrap',gap:'15px'}}>
       {
         [1,2,3,4].map((i)=>(
-          <div className={style.gitfProduct} style={{padding:'0',border:'.1px solid gray',}} >
+          <div className={style.gitfProduct} style={{padding:'0',border:'.1px solid gray',}} key={i} >
           <Image src={img} width={250} height={190} style={{borderRadius:'12px'}}/>
         
           <p className={style.text} style={{fontWeight:'600',width:'full'}}>Home living</p>
@@ -107,8 +107,8 @@ export default function page() {
     <div style={{display:'flex',justifyContent:'center',flexDirection:'row',flexWrap:'wrap',gap:'15px'}}>
       {
         [1,2,3].map((i)=>(
-          <div className={style.homeProduct} style={{padding:'0',border:'.1px solid gray',alignItems:'flex-start',gap:'10px'}} >
-          <Image src={img} width={400} height={400} style={{borderRadius:'12px'}}/>
+          <div key={i} className={style.homeProduct} style={{padding:'0',border:'.1px solid gray',alignItems:'flex-start',gap:'10px'}} >
+          <Image src={img} width={400} height={400} style={{borderRadius:'12px'}} alt='img'/>
         
           <div className={style.Blogtext}>Home living</div>
           <div className={style.text} style={{fontWeight:'600',paddingLeft:'2rem'}}>Home living siuuisa jashasuu sjhaush</div>
