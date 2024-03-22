@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import logo from '../../public/kc-logo.png'
 import india from '../../public/indiaFlag.png'
-import style from './styles.module.css'
+import style from '../app/products/styles.module.css'
 import { IoSearch ,IoPerson} from "react-icons/io5";
 import { FaRegHeart } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
