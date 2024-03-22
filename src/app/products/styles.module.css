@@ -18,6 +18,15 @@
     width: 100%;
     max-width: 47rem;
 }
+.emailinput {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  max-width: 47rem;
+}
 
 .input {
 
@@ -494,7 +503,7 @@
   .sub p{
     font-size: 10px;
   }
-  .search{
+  .emailinput{
     width: 150%;
   }
   .subBtn{

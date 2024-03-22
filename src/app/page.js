@@ -122,7 +122,7 @@ export default function Page() {
 
     <div className={style.sub}>
     <p  className={style.text}>Get unique gift ideas and so much more delivered right to your inbox.</p>
-    <div className={style.search}>
+    <div className={style.emailinput}>
                     <input placeholder='Enter your Email' className={style.input} style={{width:'55%',border:'none'}} />
                     <div className={style.subBtn} >Subscribe</div>
                 </div>
